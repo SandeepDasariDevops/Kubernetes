@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - image: centos
+    name: c01
+    command: ["/bin/bash", "-c", "sleep 15000"] # Running sleep command for 15000 secs
+    volumeMounts:
+    - mountPath: /tmp/contdir # hostpath volume's directory inside container
+      name: testvolume # hostpath volume name
+  volumes:
+  - name: testvolume # hostpath volume name
+    hostPath:
+      path: /tmp/hostdir # hostpath volume's directory on host

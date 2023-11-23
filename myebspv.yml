@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: myebsvolume
+spec:
+  capacity:
+    storage: 1Gi # Out of 20 GB, I want only 1GB as PV Object (Like this we can create any number of PV objects)
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  awsElasticBlockStore:
+    volumeID: vol-04f6dd075ab3b778a
+    fsType: ext4
